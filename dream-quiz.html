@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Your Dream Carrying for You?</title>
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FDFAF6;
+    --taupe: #C4B8A8;
+    --taupe-light: #E8E0D4;
+    --taupe-dark: #8C7E6E;
+    --charcoal: #2E2A26;
+    --charcoal-soft: #4A4440;
+    --rose: #C9A89A;
+    --rose-light: #EDD9D2;
+    --rose-pale: #F5EAE6;
+    --gold: #7A9E82;
+    --gold-light: #A8C2AC;
+    --gold-pale: #E4EDE6;
+    --text-body: #3A3330;
+    --text-muted: #7A6E66;
+    --text-light: #A89E96;
+    --border: #E0D6C8;
+    --border-hover: #C4B8A8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: var(--cream);
+    color: var(--text-body);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* ─── LAYOUT ─── */
+  .screen {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.6s ease forwards;
+  }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─── HEADER BAR ─── */
+  .site-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header .brand {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+  }
+
+  /* ─── LANDING SCREEN ─── */
+  #screen-landing {
+    background: var(--warm-white);
+  }
+  .landing-hero {
+    padding: 56px 24px 48px;
+    text-align: center;
+  }
+  .landing-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .landing-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .landing-subtitle {
+    font-size: 1.05rem;
+    color: var(--taupe-dark);
+    margin-bottom: 40px;
+    font-style: italic;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* SVG illustration */
+  .landing-illustration {
+    margin: 32px auto 36px;
+    display: block;
+    overflow: visible;
+  }
+
+  .landing-intro {
+    max-width: 520px;
+    margin: 0 auto 48px;
+    text-align: left;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 32px;
+  }
+  .landing-intro p {
+    font-size: 1rem;
+    color: var(--text-body);
+    margin-bottom: 12px;
+  }
+  .landing-intro p:last-child { margin-bottom: 0; }
+
+  /* ─── BUTTONS ─── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    padding: 16px 40px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  .btn-primary:hover {
+    background: var(--charcoal-soft);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--charcoal);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--border-hover);
+    padding: 13px 32px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  .btn-secondary:hover {
+    border-color: var(--charcoal);
+    background: var(--cream);
+  }
+
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--warm-white);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    padding: 15px 36px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-rose {
+    display: inline-block;
+    background: var(--rose);
+    color: var(--warm-white);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    padding: 15px 36px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    border-radius: 2px;
+    font-weight: 400;
+  }
+  .btn-rose:hover {
+    background: #b8948a;
+    transform: translateY(-1px);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  /* ─── QUIZ SCREEN ─── */
+  #screen-quiz {
+    background: var(--warm-white);
+  }
+  .quiz-wrap {
+    padding: 48px 24px 80px;
+  }
+
+  /* Progress bar */
+  .progress-track {
+    background: var(--taupe-light);
+    height: 3px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--rose));
+    border-radius: 999px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .progress-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 40px;
+  }
+
+  /* Question */
+  .question-number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .question-text {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--charcoal);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Answer options */
+  .options-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .option-item {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--cream);
+    cursor: pointer;
+    transition: all 0.2s;
+    overflow: hidden;
+  }
+  .option-item:hover {
+    border-color: var(--taupe-dark);
+    background: var(--warm-white);
+    transform: translateX(4px);
+  }
+  .option-item.selected {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+  }
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+  .option-letter {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    min-width: 18px;
+    padding-top: 2px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+  .option-item.selected .option-letter {
+    color: var(--gold);
+  }
+  .option-text {
+    font-size: 0.97rem;
+    color: var(--text-body);
+    line-height: 1.55;
+  }
+  .option-item.selected .option-text {
+    color: var(--charcoal);
+  }
+
+  .quiz-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 36px;
+    gap: 12px;
+  }
+
+  /* ─── RESULTS SCREEN ─── */
+  #screen-result {
+    background: var(--cream);
+  }
+  .result-wrap {
+    padding: 0 0 80px;
+  }
+
+  .result-header {
+    background: var(--charcoal);
+    padding: 64px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(184, 150, 62, 0.08);
+    pointer-events: none;
+  }
+  .result-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(201, 168, 154, 0.08);
+    pointer-events: none;
+  }
+  .result-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .result-type-title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--warm-white);
+    font-weight: 400;
+    line-height: 1.25;
+    max-width: 560px;
+    margin: 0 auto;
+    letter-spacing: -0.01em;
+  }
+
+  .result-body {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .result-section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-section:last-of-type { border-bottom: none; }
+
+  .result-section-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .result-section p {
+    font-size: 1rem;
+    color: var(--text-body);
+    line-height: 1.75;
+  }
+
+  /* Conversation box */
+  .conversation-box {
+    background: var(--rose-pale);
+    border: 1px solid var(--rose-light);
+    border-left: 3px solid var(--rose);
+    padding: 24px 28px;
+    border-radius: 3px;
+    margin-top: 8px;
+  }
+  .conversation-box p {
+    font-size: 1rem;
+    color: var(--charcoal-soft);
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Action box */
+  .action-box {
+    background: var(--gold-pale);
+    border: 1px solid #DEC87A;
+    border-left: 3px solid var(--gold);
+    padding: 24px 28px;
+    border-radius: 3px;
+    margin-top: 8px;
+  }
+  .action-box p {
+    font-size: 0.97rem;
+    color: var(--charcoal-soft);
+    line-height: 1.65;
+  }
+
+  /* Shift box */
+  .shift-box {
+    background: var(--taupe-light);
+    border: 1px solid var(--taupe);
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .shift-arrow {
+    color: var(--taupe-dark);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .shift-box p {
+    font-size: 1rem;
+    color: var(--charcoal-soft);
+    line-height: 1.6;
+  }
+
+  /* Closing reflection */
+  .closing-reflection {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 56px 24px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .closing-reflection p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    opacity: 0.9;
+  }
+  .closing-reflection p:last-of-type { margin-bottom: 0; }
+  .closing-tagline {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px !important;
+    font-weight: 400;
+    opacity: 1 !important;
+  }
+
+  /* Email capture */
+  .email-capture {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 32px;
+    max-width: 440px;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+  .email-capture h3 {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .email-capture p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .form-field {
+    margin-bottom: 12px;
+  }
+  .form-field input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--cream);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-field input:focus {
+    border-color: var(--taupe-dark);
+  }
+  .form-field input::placeholder {
+    color: var(--text-light);
+  }
+
+  /* Result actions */
+  .result-actions {
+    padding: 40px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Secondary CTA banner */
+  .secondary-cta {
+    background: var(--rose-pale);
+    border-top: 1px solid var(--rose-light);
+    border-bottom: 1px solid var(--rose-light);
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .secondary-cta p {
+    font-size: 0.95rem;
+    color: var(--charcoal-soft);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    background: var(--charcoal);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .footer-brand {
+    font-size: 1rem;
+    color: var(--warm-white);
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .footer-tagline {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 480px) {
+    .landing-intro { padding: 22px 20px; }
+    .email-capture { padding: 28px 20px; }
+    .result-header { padding: 48px 20px 40px; }
+    .conversation-box, .action-box { padding: 18px 20px; }
+    .cta-row { flex-direction: column; align-items: center; }
+    .result-actions { flex-direction: column; align-items: center; }
+  }
+
+  /* ─── DIVIDER ─── */
+  .ornament {
+    text-align: center;
+    color: var(--taupe);
+    font-size: 1.2rem;
+    letter-spacing: 0.4em;
+    padding: 32px 0 8px;
+    opacity: 0.5;
+  }
+
+  /* share tooltip */
+  .share-toast {
+    display: none;
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--charcoal);
+    color: var(--warm-white);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.82rem;
+    padding: 12px 24px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     LANDING SCREEN
+═══════════════════════════════════════════════ -->
+<div id="screen-landing" class="screen active">
+  <header class="site-header">
+    <span class="brand">Grace in the Middle</span>
+  </header>
+
+  <div class="landing-hero">
+    <!-- Simple line-art illustration -->
+    <svg class="landing-illustration" width="180" height="190" viewBox="0 -10 120 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- figure -->
+      <circle cx="60" cy="28" r="10" stroke="#7A9E82" stroke-width="1.5" fill="none"/>
+      <line x1="60" y1="38" x2="60" y2="72" stroke="#7A9E82" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="60" y1="48" x2="44" y2="58" stroke="#7A9E82" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- arm reaching forward with bag -->
+      <line x1="60" y1="48" x2="80" y2="56" stroke="#7A9E82" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- legs -->
+      <line x1="60" y1="72" x2="50" y2="90" stroke="#7A9E82" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="60" y1="72" x2="70" y2="90" stroke="#7A9E82" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- bag / dream object (sits across from figure) -->
+      <rect x="84" y="50" width="24" height="22" rx="3" stroke="#C9A89A" stroke-width="1.5" fill="none"/>
+      <line x1="84" y1="60" x2="108" y2="60" stroke="#C9A89A" stroke-width="1" stroke-dasharray="2 2"/>
+      <!-- bag handle -->
+      <path d="M89 50 Q96 42 103 50" stroke="#C9A89A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- small stars / weight symbols inside bag -->
+      <circle cx="92" cy="65" r="1.5" fill="#C9A89A" opacity="0.6"/>
+      <circle cx="96" cy="57" r="1.5" fill="#C9A89A" opacity="0.6"/>
+      <circle cx="100" cy="65" r="1.5" fill="#C9A89A" opacity="0.6"/>
+      <!-- ground line -->
+      <line x1="20" y1="100" x2="100" y2="100" stroke="#E0D6C8" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+
+    <p class="landing-eyebrow">Reflective Quiz</p>
+    <h1 class="landing-title">What Have You Been<br>Asking Your Dream to Hold?</h1>
+    <p class="landing-subtitle">For when your desire has started to feel more like pressure than possibility.</p>
+
+    <div class="landing-intro">
+      <p>Sometimes, the thing we want to build becomes responsible for more than its own success.</p>
+      <p>It starts carrying our need to feel safe, seen, free, validated, relieved, or finally allowed to be who we are.</p>
+      <p>This short quiz will help you see what you may be asking your dream, business, or creative project to hold — and how to take some of that pressure off.</p>
+    </div>
+
+    <div style="width:40px; height:1px; background:var(--gold); margin:32px auto 32px; opacity:0.6;"></div>
+    <button class="btn-primary" onclick="startQuiz()">Start the Quiz</button>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-brand">Grace in the Middle</p>
+    <p class="footer-tagline">For people in the middle of change, when life is still unfolding and the next step may not be clear.</p>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     QUIZ SCREEN
+═══════════════════════════════════════════════ -->
+<div id="screen-quiz" class="screen">
+  <header class="site-header">
+    <span class="brand">Grace in the Middle</span>
+  </header>
+
+  <div class="quiz-wrap">
+    <div class="container">
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <p class="progress-label" id="progress-label">Question 1 of 8</p>
+
+      <div id="question-area"></div>
+
+      <div class="quiz-nav">
+        <button class="btn-secondary" id="btn-back" onclick="goBack()" style="display:none">Back</button>
+        <button class="btn-primary" id="btn-next" onclick="goNext()" disabled>Next</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-brand">Grace in the Middle</p>
+    <p class="footer-tagline">For people in the middle of change, when life is still unfolding and the next step may not be clear.</p>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     RESULT SCREEN
+═══════════════════════════════════════════════ -->
+<div id="screen-result" class="screen">
+  <header class="site-header">
+    <span class="brand">Grace in the Middle</span>
+  </header>
+
+  <div class="result-wrap">
+    <div class="result-header">
+      <p class="result-eyebrow">Your Result</p>
+      <h2 class="result-type-title" id="result-title"></h2>
+      <p id="result-pressure" style="margin-top:20px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); opacity:0.85;"></p>
+    </div>
+
+    <div class="result-body">
+      <div class="result-section">
+        <p class="result-section-label">What you may be asking your dream or business to carry</p>
+        <p id="result-carry"></p>
+      </div>
+
+      <div class="result-section">
+        <p class="result-section-label">What this may create</p>
+        <p id="result-creates"></p>
+      </div>
+
+      <div class="result-section">
+        <p class="result-section-label">The shift</p>
+        <div class="shift-box">
+          <span class="shift-arrow">→</span>
+          <p id="result-shift"></p>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <p class="result-section-label">One next conversation</p>
+        <p style="font-size:0.9rem; color:var(--text-muted); font-family:'Helvetica Neue',Arial,sans-serif; margin-bottom:12px;">Ask your business:</p>
+        <div class="conversation-box">
+          <p id="result-conversation"></p>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <p class="result-section-label">One small grounded action</p>
+        <div class="action-box">
+          <p id="result-action"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing reflection -->
+    <div class="closing-reflection">
+      <p class="closing-tagline">A closing thought</p>
+      <p>Your dream or business matters.</p>
+      <p>It is still creative, useful, beautiful, profitable, and worth pursuing.</p>
+      <p>But it does not have to carry your whole worth, your whole identity, or your whole future.</p>
+      <p style="margin-top:24px; font-style:italic; opacity:0.7;">The honest conversation starts here.</p>
+    </div>
+
+    <!-- Substack subscribe -->
+    <div class="email-capture">
+      <h3>Want more reflections like this?</h3>
+      <p>Grace in the Middle is a place for people in the middle of change, when life is still unfolding and the next step may not be clear.</p>
+      <a href="https://substack.com/@graceinthemiddlecollective" target="_blank" rel="noopener" class="btn-primary" style="display:block; text-align:center; text-decoration:none; margin-top:8px;">Read on Substack</a>
+    </div>
+
+    <!-- Result actions -->
+    <div class="result-actions">
+      <button class="btn-secondary" onclick="restartQuiz()">Restart Quiz</button>
+      <button class="btn-secondary" onclick="shareResult()">Share My Result</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-brand">Grace in the Middle</p>
+    <p class="footer-tagline">For people in the middle of change, when life is still unfolding and the next step may not be clear.</p>
+  </footer>
+</div>
+
+<!-- Share toast -->
+<div class="share-toast" id="share-toast">Link copied to clipboard</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// QUIZ DATA
+// ═══════════════════════════════════════════════
+
+const RESULT_TYPES = {
+  Relief:       'Relief',
+  Proof:        'Proof',
+  Permission:   'Permission',
+  Identity:     'Identity',
+  Escape:       'Escape',
+  Rescuer:      'Rescuer'
+};
+
+// Tie-breaking priority order (first = highest priority)
+const TIE_PRIORITY = ['Relief', 'Proof', 'Permission', 'Identity', 'Escape', 'Rescuer'];
+
+const QUESTIONS = [
+  {
+    number: 1,
+    text: "When you think about this dream, business, offer, or creative project, what do you most want it to give you?",
+    options: [
+      { letter: "A", text: "A way out of the life, job, or season I'm tired of.", type: "Escape" },
+      { letter: "B", text: "Proof that I'm capable, talented, or not behind.", type: "Proof" },
+      { letter: "C", text: "A clearer sense of who I am and what I'm here to do.", type: "Identity" },
+      { letter: "D", text: "Permission to finally choose myself and my own path.", type: "Permission" },
+      { letter: "E", text: "Relief from the pressure, exhaustion, or financial stress I've been carrying.", type: "Relief" },
+      { letter: "F", text: "A feeling that something is finally coming to save me.", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 2,
+    text: "What feels most painful when the business or dream is not moving forward?",
+    options: [
+      { letter: "A", text: "I feel trapped in my current reality.", type: "Escape" },
+      { letter: "B", text: "I worry it means I'm not disciplined, capable, or good enough.", type: "Proof" },
+      { letter: "C", text: "I feel disconnected from the version of myself I thought I would become.", type: "Identity" },
+      { letter: "D", text: "I feel like I'm still waiting for approval, timing, or permission.", type: "Permission" },
+      { letter: "E", text: "I feel exhausted by wanting something that still feels far away.", type: "Relief" },
+      { letter: "F", text: "I feel like nothing or no one is coming to help me.", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 3,
+    text: "What do you secretly hope will change once this business, offer, or dream works?",
+    options: [
+      { letter: "A", text: "I won't have to keep living or working this same way.", type: "Escape" },
+      { letter: "B", text: "People will finally see what I'm capable of.", type: "Proof" },
+      { letter: "C", text: "I'll finally feel like myself again.", type: "Identity" },
+      { letter: "D", text: "I'll stop needing everyone else to understand or approve.", type: "Permission" },
+      { letter: "E", text: "I'll be able to breathe, rest, and stop carrying so much.", type: "Relief" },
+      { letter: "F", text: "I'll feel supported, chosen, or taken care of by life.", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 4,
+    text: "When you avoid taking action, what is usually underneath?",
+    options: [
+      { letter: "A", text: "If I start and it doesn't work, I lose my imagined way out.", type: "Escape" },
+      { letter: "B", text: "If I fail, it confirms something painful about me.", type: "Proof" },
+      { letter: "C", text: "If I succeed, I may have to become someone new.", type: "Identity" },
+      { letter: "D", text: "If I choose it fully, I may disappoint people or be judged.", type: "Permission" },
+      { letter: "E", text: "I'm too tired to make the dream carry one more demand.", type: "Relief" },
+      { letter: "F", text: "I'm scared I'll find out no one is coming to save me.", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 5,
+    text: "Which sentence feels most familiar?",
+    options: [
+      { letter: "A", text: "\"This has to work so I can leave.\"", type: "Escape" },
+      { letter: "B", text: "\"This has to work so I can prove I'm enough.\"", type: "Proof" },
+      { letter: "C", text: "\"This has to work so I can become who I'm supposed to be.\"", type: "Identity" },
+      { letter: "D", text: "\"This has to work so I can finally justify choosing myself.\"", type: "Permission" },
+      { letter: "E", text: "\"This has to work so I can finally rest.\"", type: "Relief" },
+      { letter: "F", text: "\"This has to work so something can save me.\"", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 6,
+    text: "When this dream feels far away, what comes up first?",
+    options: [
+      { letter: "A", text: "Panic — I just need to get out of this situation and then I can focus.", type: "Escape" },
+      { letter: "B", text: "Shame — maybe I'm just not the kind of person who can do this.", type: "Proof" },
+      { letter: "C", text: "Loss — I'm falling behind the version of myself I was supposed to be by now.", type: "Identity" },
+      { letter: "D", text: "Guilt — I haven't earned the right to want this yet.", type: "Permission" },
+      { letter: "E", text: "Exhaustion — I've been carrying this hope for so long and I'm tired.", type: "Relief" },
+      { letter: "F", text: "Despair — I'm not sure anything or anyone is coming to help me.", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 7,
+    text: "If your business, dream, or creative project could talk back, what might it say?",
+    options: [
+      { letter: "A", text: "\"I can become a door, but I cannot be your only way out.\"", type: "Escape" },
+      { letter: "B", text: "\"I can reveal your courage, but I cannot prove your worth.\"", type: "Proof" },
+      { letter: "C", text: "\"I can help you express yourself, but I cannot be your whole identity.\"", type: "Identity" },
+      { letter: "D", text: "\"I can support your choice, but I cannot give you permission you already have.\"", type: "Permission" },
+      { letter: "E", text: "\"I can bring meaning, but I cannot be your only source of rest.\"", type: "Relief" },
+      { letter: "F", text: "\"I can walk with you, but I cannot rescue you from being human.\"", type: "Rescuer" }
+    ]
+  },
+  {
+    number: 8,
+    text: "What would feel like a healthier relationship with the thing you're building?",
+    options: [
+      { letter: "A", text: "Letting it be one possible path, not my only escape.", type: "Escape" },
+      { letter: "B", text: "Letting it be an expression of my gifts, not a verdict on my worth.", type: "Proof" },
+      { letter: "C", text: "Letting it be part of who I am, not all of who I am.", type: "Identity" },
+      { letter: "D", text: "Letting myself choose before everyone understands.", type: "Permission" },
+      { letter: "E", text: "Letting it receive my energy without demanding it fix my exhaustion.", type: "Relief" },
+      { letter: "F", text: "Letting it become a companion, not a savior.", type: "Rescuer" }
+    ]
+  }
+];
+
+const RESULTS = {
+  Rescuer: {
+    title: "You may be asking your business to be your Rescuer.",
+    pressure: "Be my rescue.",
+    carry: "You may be asking this business, offer, or creative project to save you from disappointment, exhaustion, uncertainty, financial pressure, or the ache of feeling unsupported.",
+    creates: "When a business becomes a rescuer, it can start to feel too heavy to touch. You may avoid it because starting means facing the possibility that it cannot save you in the exact way you hoped.",
+    shift: "Let the business become a companion and vehicle, not a savior.",
+    conversation: "\"What can you walk with me through, without needing to rescue me from my whole life?\"",
+    action: "Choose one tiny action that reconnects you to the business without demanding transformation today. Set a timer for 15 minutes and take one simple step."
+  },
+  Proof: {
+    title: "You may be asking your business to be Proof.",
+    pressure: "Be my evidence.",
+    carry: "You may be asking this business, offer, or creative project to prove that you are talented, worthy, disciplined, special, capable, or not behind.",
+    creates: "When a business becomes proof, every step can feel like a test. Progress feels good, but delay can feel like evidence against you.",
+    shift: "Let the business become an expression of your worth, not the source of it.",
+    conversation: "\"What would change if I stopped asking you to prove I am enough?\"",
+    action: "Make one imperfect move that counts as participation, not performance. Draft the post. Sketch the offer. Open the document. Do not turn it into a verdict."
+  },
+  Escape: {
+    title: "You may be asking your business to be an Escape Hatch.",
+    pressure: "Be my exit.",
+    carry: "You may be asking this business, offer, or creative project to get you out of a life, job, role, season, or version of yourself that feels too tight.",
+    creates: "When a business becomes your only exit, it can create pressure and panic. The business starts to feel urgent, not intimate. Instead of building from clarity, you may build from desperation.",
+    shift: "Let the business become a door, not the only way out.",
+    conversation: "\"What part of my current life needs care now, even before you become real?\"",
+    action: "Name one place where you need relief now. Do one small thing that gives your nervous system evidence that your life can soften before everything changes."
+  },
+  Identity: {
+    title: "You may be asking your business to be your Identity.",
+    pressure: "Be my identity.",
+    carry: "You may be asking this business, offer, or creative project to tell you who you are, who you are becoming, or who you were meant to be.",
+    creates: "When a business becomes your whole identity, it can feel terrifying to change, pause, fail, pivot, or want something different. The business becomes less of a creative relationship and more of a mirror you are afraid to lose.",
+    shift: "Let the business be part of you, not all of you.",
+    conversation: "\"Who am I even when you are quiet, delayed, or changing shape?\"",
+    action: "Write down three parts of you that exist outside this business or dream. Let the business have a place at the table without making it carry your entire selfhood."
+  },
+  Permission: {
+    title: "You may be asking your business to be your Permission Slip.",
+    pressure: "Be my permission.",
+    carry: "You may be asking this business, offer, or creative project to justify your desire, ambition, rest, creativity, visibility, or decision to choose yourself.",
+    creates: "When a business becomes permission, you may keep waiting for signs, approval, timing, credentials, confidence, or outside validation before you let yourself begin.",
+    shift: "Let the business support your choice, not authorize it.",
+    conversation: "\"What have I been waiting for you to make acceptable?\"",
+    action: "Do one small thing you already know you want to do without explaining it to everyone first. Let the action be private if it needs to be."
+  },
+  Relief: {
+    title: "You may be asking your business to be Relief.",
+    pressure: "Be my relief.",
+    carry: "You may be asking this business, offer, or creative project to bring ease, rest, spaciousness, money, freedom, or a life that finally feels lighter.",
+    creates: "When a business becomes relief, it can become painful to work on because you are asking an already-tired part of yourself to build the thing that is supposed to help you rest.",
+    shift: "Let the business receive your energy without making it responsible for your entire restoration.",
+    conversation: "\"What is one way I can move toward you without abandoning my need for rest?\"",
+    action: "Choose a 10-minute version of the business. Make it so small your body says yes. Rest is not the enemy of the dream. It may be part of the way back."
+  }
+};
+
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+
+let currentQuestion = 0;
+let answers = new Array(QUESTIONS.length).fill(null); // stores type string or null
+
+// ═══════════════════════════════════════════════
+// SCREEN MANAGEMENT
+// ═══════════════════════════════════════════════
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════════
+// QUIZ LOGIC
+// ═══════════════════════════════════════════════
+
+function startQuiz() {
+  currentQuestion = 0;
+  answers = new Array(QUESTIONS.length).fill(null);
+  renderQuestion();
+  showScreen('screen-quiz');
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQuestion];
+  const area = document.getElementById('question-area');
+
+  // Build options HTML
+  const optionsHTML = q.options.map((opt, idx) => `
+    <li class="option-item" id="opt-${idx}">
+      <button class="option-btn" onclick="selectOption(${idx}, '${opt.type}')" aria-label="${opt.letter}: ${opt.text.replace(/"/g, '&quot;')}">
+        <span class="option-letter">${opt.letter}</span>
+        <span class="option-text">${opt.text}</span>
+      </button>
+    </li>
+  `).join('');
+
+  area.innerHTML = `
+    <p class="question-number">Question ${q.number} of ${QUESTIONS.length}</p>
+    <h2 class="question-text">${q.text}</h2>
+    <ul class="options-list" role="radiogroup" aria-label="Answer options">
+      ${optionsHTML}
+    </ul>
+  `;
+
+  // Restore previous selection if any
+  if (answers[currentQuestion]) {
+    const prevType = answers[currentQuestion];
+    q.options.forEach((opt, idx) => {
+      if (opt.type === prevType) {
+        document.getElementById(`opt-${idx}`).classList.add('selected');
+      }
+    });
+    document.getElementById('btn-next').disabled = false;
+  } else {
+    document.getElementById('btn-next').disabled = true;
+  }
+
+  // Back button visibility
+  document.getElementById('btn-back').style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+
+  // Progress
+  const pct = (currentQuestion / QUESTIONS.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `Question ${currentQuestion + 1} of ${QUESTIONS.length}`;
+
+  // Update next button label on last question
+  document.getElementById('btn-next').textContent = currentQuestion === QUESTIONS.length - 1 ? 'See My Result' : 'Next';
+}
+
+function selectOption(idx, type) {
+  // Clear all selections
+  document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+  // Select clicked
+  document.getElementById(`opt-${idx}`).classList.add('selected');
+  // Store answer
+  answers[currentQuestion] = type;
+  // Enable next
+  document.getElementById('btn-next').disabled = false;
+}
+
+function goNext() {
+  if (answers[currentQuestion] === null) return;
+
+  if (currentQuestion < QUESTIONS.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    // Smooth scroll to top of quiz
+    document.getElementById('screen-quiz').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    showResult();
+  }
+}
+
+function goBack() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+    document.getElementById('screen-quiz').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// ═══════════════════════════════════════════════
+// SCORING
+// ═══════════════════════════════════════════════
+
+function calculateResult() {
+  const scores = { Relief: 0, Proof: 0, Permission: 0, Identity: 0, Escape: 0, Rescuer: 0 };
+  answers.forEach(type => { if (type) scores[type]++; });
+
+  const maxScore = Math.max(...Object.values(scores));
+
+  // Get all tied types
+  const tied = TIE_PRIORITY.filter(t => scores[t] === maxScore);
+
+  // Return first in priority order
+  return tied[0];
+}
+
+// ═══════════════════════════════════════════════
+// SHOW RESULT
+// ═══════════════════════════════════════════════
+
+function showResult() {
+  const resultKey = calculateResult();
+  const result = RESULTS[resultKey];
+
+  document.getElementById('result-title').textContent = result.title;
+  document.getElementById('result-pressure').textContent = result.pressure;
+  document.getElementById('result-carry').textContent = result.carry;
+  document.getElementById('result-creates').textContent = result.creates;
+  document.getElementById('result-shift').textContent = result.shift;
+  document.getElementById('result-conversation').textContent = result.conversation;
+  document.getElementById('result-action').textContent = result.action;
+
+  // Store result key for sharing
+  window._lastResultKey = resultKey;
+
+  // Update progress to 100%
+  document.getElementById('progress-fill').style.width = '100%';
+
+  showScreen('screen-result');
+}
+
+// ═══════════════════════════════════════════════
+// RESTART
+// ═══════════════════════════════════════════════
+
+function restartQuiz() {
+  currentQuestion = 0;
+  answers = new Array(QUESTIONS.length).fill(null);
+  renderQuestion();
+  showScreen('screen-quiz');
+}
+
+// ═══════════════════════════════════════════════
+// EMAIL SUBMIT
+// ═══════════════════════════════════════════════
+
+function handleEmailSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('input-name').value.trim();
+  const email = document.getElementById('input-email').value.trim();
+  if (!email) return;
+
+  // Replace this with your actual form handler / email service
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Sent — thank you!';
+  btn.disabled = true;
+  btn.style.background = 'var(--taupe-dark)';
+}
+
+// ═══════════════════════════════════════════════
+// SHARE
+// ═══════════════════════════════════════════════
+
+function shareResult() {
+  const key = window._lastResultKey || '';
+  const resultNames = {
+    Rescuer: 'The Business as Rescuer',
+    Proof: 'The Business as Proof',
+    Escape: 'The Business as an Escape Hatch',
+    Identity: 'The Business as Identity',
+    Permission: 'The Business as Permission Slip',
+    Relief: 'The Business as Relief'
+  };
+  const text = `I just took the "What Is Your Dream Carrying for You?" quiz. My result: ${resultNames[key] || 'a meaningful reflection'}. Take it here: ${window.location.href}`;
+
+  if (navigator.share) {
+    navigator.share({ title: 'What Is Your Dream Carrying for You?', text, url: window.location.href }).catch(() => {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const toast = document.getElementById('share-toast');
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2800);
+    });
+  }
+}
+</script>
+</body>
+</html>
